@@ -8,7 +8,7 @@ import { viteStaticCopy } from "vite-plugin-static-copy";
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, "src/main.ts"),
+      entry: resolve(__dirname, "main.ts"),
       name: "Picky",
       fileName: "picky",
       formats: ["es", "umd"],
