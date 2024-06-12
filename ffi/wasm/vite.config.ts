@@ -1,16 +1,18 @@
-import { defineConfig } from 'vite';
-import topLevelAwait from 'vite-plugin-top-level-await';
-import dtsPlugin from 'vite-plugin-dts';
-import wasm from 'vite-plugin-wasm';
+import { resolve } from "path";
+import { defineConfig } from "vite";
+import topLevelAwait from "vite-plugin-top-level-await";
+import dtsPlugin from "vite-plugin-dts";
+import wasm from "vite-plugin-wasm";
 
+// https://vitejs.dev/config/
 export default defineConfig({
   build: {
     lib: {
-      entry: 'main.ts',
-      name: '@Devolutions/picky',
-      formats: ['es'],
+      entry: resolve(__dirname, "src/main.ts"),
+      name: "@devolutions/picky",
+      fileName: "picky",
+      formats: ["es", "umd"],
     },
   },
-  assetsInclude: ['pkg/picky_bg.wasm'],
-  plugins: [wasm(), topLevelAwait(), dtsPlugin()],
+  plugins: [wasm(), topLevelAwait(), dtsPlugin({ rollupTypes: true })],
 });
