@@ -1,18 +1,30 @@
 import { resolve } from "path";
 import { defineConfig } from "vite";
 import topLevelAwait from "vite-plugin-top-level-await";
-import dtsPlugin from "vite-plugin-dts";
 import wasm from "vite-plugin-wasm";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "src/main.ts"),
-      name: "@devolutions/picky",
+      name: "Picky",
       fileName: "picky",
       formats: ["es", "umd"],
     },
   },
-  plugins: [wasm(), topLevelAwait(), dtsPlugin({ rollupTypes: true })],
+  assetsInclude: ["./pkg/picky.d.ts"],
+  plugins: [
+    wasm(),
+    topLevelAwait(),
+    viteStaticCopy({
+      targets: [
+        {
+          src: "./pkg/picky.d.ts",
+          dest: "./",
+        },
+      ],
+    }),
+  ],
 });
