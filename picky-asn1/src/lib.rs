@@ -1,3 +1,5 @@
+#![feature(restricted_std)]
+
 pub mod bit_string;
 pub mod date;
 pub mod restricted_string;
