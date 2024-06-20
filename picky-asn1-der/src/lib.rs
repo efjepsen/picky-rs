@@ -1,3 +1,5 @@
+#![feature(restricted_std)]
+
 //! [![Crates.io](https://img.shields.io/crates/v/picky-asn1-der.svg)](https://crates.io/crates/picky-asn1-der)
 //! [![docs.rs](https://docs.rs/picky-asn1-der/badge.svg)](https://docs.rs/picky-asn1-der)
 //! ![Crates.io](https://img.shields.io/crates/l/picky-asn1-der)
