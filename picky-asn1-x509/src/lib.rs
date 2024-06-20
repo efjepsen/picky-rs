@@ -1,3 +1,5 @@
+#![feature(restricted_std)]
+
 #[macro_use]
 mod macros;
 
